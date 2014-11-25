@@ -37,7 +37,6 @@ def is_old_enough(comment):
 	return current_time - created_time > wait
 	
 def is_legit(comment):
-	print comment.author
 	if not 'tvtropes.org/pmwiki/pmwiki.php/Main/' in comment.body:
 		return False
 	elif comment.author == username:
