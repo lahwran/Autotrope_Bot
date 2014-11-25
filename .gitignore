@@ -1,2 +1,4 @@
 
-data_file.inf
+*data_file.inf
+
+*.pyc
