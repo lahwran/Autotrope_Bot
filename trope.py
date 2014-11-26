@@ -1,7 +1,8 @@
 import urllib2, re
 from BeautifulSoup import BeautifulSoup
+# This is in a separate file in order to clean up the main code. The function takes in a 
+# url and outputs a list with the header and body text
 
-    
 def get_page(url, max_length):
 	elements = []
 	html = urllib2.urlopen(url)
