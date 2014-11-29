@@ -109,7 +109,7 @@ os.chdir(dname)
 
 # Setting up the reddit instance
 load_data()
-r = praw.Reddit("Test Autotrope Bot by /u/youareinthematrix")
+r = praw.Reddit("Autotrope Bot v2.1 by /u/youareinthematrix")
 try:
 	r.login(username, password) # Variables set by load_data()
 	log.green('Logged in.')
