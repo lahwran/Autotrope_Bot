@@ -17,5 +17,6 @@ This bot finds links on reddit that lead to TvTropes.org, and posts a summary of
 6. The last line is the minimum character length, used to stop 1-liners. 600 is a good value.
 
 ### Launching the program
-To launch the prgram, simple run `python autotrope_bot.py`  
-To quit the program, use `ctrl`+`c`
+To launch the prgram, run `python autotrope_bot.py`  
+To run the deleter, on a seperate console run `python remove_negative.py`  
+To quit the program, use `ctrl + c`
