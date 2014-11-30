@@ -116,31 +116,12 @@ except praw.errors.InvalidUserPass:
 	kill_program('Bad login.')
 except Exception as error:
 	kill_program('At login: {0}'.format(error))
-# Here's the proper start of the program, where we use a while loop to make it endless
+
+bot = r.get_redditor(username)
+
 while True:
-	try: 
-# I use a lot of try/except blocks, as the old code crashed endlessly. This way,
-# the problem is simply ignored (which is OK to do, as the errors raised are not
-# critical to the program)
-		for comment in praw.helpers.comment_stream(r,subreddits_to_scan, limit=200): 
-		# We limit the loop so that it can do everything after 
-			try:
-				if is_legit(comment):
-					link = get_link(comment)
-					if link: # Checks if the link is there.
-						try:
-							# Go the trope.py to see how this works
-							page = trope.get_page(link, max_length)
-							# Formats the raw comment text
-							comment_text = comment_text.format(page[0], page[1], link)
-							comment.reply(comment_text)
-							log.norm('Added comment! {0}'.format(comment.id))
-						except Exception as error:
-							log.blue('Error at getting page: {0}'.format(error))
-						finally:
-							done_posts.append(comment.id) # Stops double posting
-			except Exception as error:
-				log.blue('Error at in main loop : {0}'.format(error))
-	except KeyboardInterrupt: # Saves data on exit
-		save_data()
-		kill_program('Killed by user')
+	for comment in bot.get_comments(limit=500):
+		if comment.score < -1:
+			log.norm('Deleting {0}'.format(comment.id))
+			comment.delete()
+	load_data()
