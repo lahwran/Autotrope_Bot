@@ -120,8 +120,14 @@ except Exception as error:
 bot = r.get_redditor(username)
 
 while True:
-	for comment in bot.get_comments(limit=500):
-		if comment.score < -1:
-			log.norm('Deleting {0}'.format(comment.id))
-			comment.delete()
+	try:
+		for comment in bot.get_comments(limit=500):
+			if comment.score < -1:
+				log.norm('Deleting {0}'.format(comment.id))
+				comment.delete()
+				time.sleep(10) # Limit the requests, slows down the program, stops it trying to delete twice.
+	except requests.exceptions.HTTPError:
+		log.yellow('HTTP Error!')
+	except Exception as error:
+		kill_program('On deleter loop: {0}'.format(error))
 	load_data()
