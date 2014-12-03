@@ -77,12 +77,9 @@ def save_data():
 		with open('data_file.inf', 'w+') as f:
 			# Writes all existing data to the file, so that the already done comments and
 			# people to leave alone are appended to it.
-			f.write('{0}\n{1}\n{2}\n{3}\n{4}\n{5}'.format(username, 
-								      password,
-								      subreddits_to_scan,
-								      ' '.join(leave_them),
-		  						      ' '.join(done_posts),
-							       	      max_length))
+			f.write('{0}\n{1}\n{2}\n{3}\n{4}\n{5}'.format(username, password,
+								      subreddits_to_scan, ' '.join(leave_them),
+		  						      ' '.join(done_posts),  max_length))
 	# No point killing the program here - it already has the variables in its memory													
 	except Exception as error:
 		log.red('Fail at data save: {0}'.format(error))
