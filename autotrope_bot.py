@@ -129,7 +129,7 @@ while True:
 							# Go the trope.py to see how this works
 							page = trope.get_page(link, max_length)
 							# Formats the raw comment text
-							comment_body = comment_text.format(page[0], page[1], link)
+							comment_body = comment_text.format(page, link)
 							comment.reply(comment_body)
 							log.norm('Added comment! {0}'.format(comment.id))
 						except Exception as error:

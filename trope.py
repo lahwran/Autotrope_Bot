@@ -7,14 +7,12 @@ whitelist_tags = ['a', 'b', 'em', 'p'] # Tags we keep
 
 remove_divs = ['quoteright', 'acaptionright', 'indent']
 def get_page(url, max_length):
-	elements = []
 	html = urllib2.urlopen(url)
 	soup = BeautifulSoup(html)
 	
 	# Get header
 	header = soup.find('div', {'class':"pagetitle"})
 	header = header.find('span').text
-	elements.append(header)
 	
 	# Get wiki text
 	wiki_text = soup.find(id="wikitext").prettify()
@@ -60,9 +58,8 @@ def get_page(url, max_length):
 		j += 1
 		i = wiki_text.find('\n \n', j)
 	wiki_text = wiki_text[:i]
-	elements.append(wiki_text)
-	return elements
+	return header, wiki_text
 
 if __name__ == '__main__':
 	i = get_page('http://tvtropes.org/pmwiki/pmwiki.php/Main/TimeyWimeyBall', 600)
-	print i[1]
+	print i
