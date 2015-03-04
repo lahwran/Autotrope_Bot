@@ -1,5 +1,5 @@
-Autotrope_Bot
-=============
+`Autotrope_Bot`
+===============
 This bot finds links on reddit that lead to TvTropes.org, and posts a summary of them.
 
 ## Creating your own instance
@@ -20,3 +20,13 @@ This bot finds links on reddit that lead to TvTropes.org, and posts a summary of
 To launch the prgram, run `python autotrope_bot.py`  
 To run the deleter, on a seperate console run `python remove_negative.py`  
 To quit the program, use `ctrl + c`
+
+## TODO
+
+- [ ] Switch to blessings for terminal coloring
+- [ ] Move main code into package
+- [ ] Use dictionary, class, tuple, some sort of data structure for config
+- [ ] De-duplicate code between `remove_negative` and `autotrope_bot`
+- [ ] Add requirements.txt for dependencies, to ease bootstrap
+- [ ] Use more user-friendly and stable config format - formatted json is
+  popular, and even though it isn't the best, it's easy to get started
